@@ -1,9 +1,18 @@
-
 import pygame
 
+import Common
+import VRAG
+import player1
+import MACH
+Player = player1.player1Object()
+vrags = VRAG.vrag1Object()
+BAL = MACH.Ball()
+all_sprites = pygame.sprite.Group()
+all_sprites.add(BAL)
 pygame.init()
-
-win = pygame.display.set_mode((600, 1000))
+win = Common.win
+FPS = 60
+clock = pygame.time.Clock()
 def draw_pole():
     pygame.draw.line(win, (250, 250, 250), (0, 0), (5, 1000), 20)
     pygame.draw.line(win, (250, 250, 250), (600, 0), (600, 1000), 20)
@@ -19,9 +28,15 @@ while True:
             exit()
 
     win.fill((0, 225, 0))
+
     draw_pole()
+    vrags.draw()
+    vrags.run()
+    Player.draw()
+    Player.run()
+    all_sprites.draw(win)
 
 
     pygame.display.update()
-
+    clock.tick(FPS)
 

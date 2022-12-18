@@ -1,12 +1,15 @@
-import pygame.draw
+import pygame
+import Common
+
+win = Common.win
 
 
-class player1():
+class player1Object():
     x = 250
     y = 900
-    def draw(self, x, y):
-        pygame.draw.polygon( win, (150, 150, 150),((self.x, self.y), (self.x, self.y + 20), (self.x + 100, self.y), (self.x + 100, self.y + 20)))
-    def run(self, x, y):
+    def draw(self,):
+        pygame.draw.polygon( win, (150, 50, 250),((self.x, self.y), (self.x, self.y + 10), (self.x + 100, self.y + 10), (self.x + 100, self.y)))
+    def run(self,):
         keys = pygame.key.get_pressed()
         if keys[pygame.K_RIGHT]:
             self.x += 2
