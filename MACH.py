@@ -22,5 +22,23 @@ class Ball(pygame.sprite.Sprite):
         self.rect = self.image.get_rect()
         self.rect.left = 270
         self.rect.top = 470
-
+        self.s = random.randrange(1, 7)
+    def update(self):
+        self.rand = self.s
+        if self.rand == 1:
+            self.rect.left-= 1
+            self.rect.top -= 1
+        elif self.rand == 2:
+             self.rect.left-= 1
+        elif self.rand == 2:
+            self.rect.left -= 1
+            self.rect.top += 1
+        elif self.rand == 2:
+            self.rect.left += 1
+            self.rect.top += 1
+        elif self.rand == 2:
+            self.rect.left += 1
+        elif self.rand == 2:
+            self.rect.left += 1
+            self.rect.top -= 1
 

@@ -9,6 +9,7 @@ vrags = VRAG.vrag1Object()
 BAL = MACH.Ball()
 all_sprites = pygame.sprite.Group()
 all_sprites.add(BAL)
+
 pygame.init()
 win = Common.win
 FPS = 60
@@ -35,7 +36,7 @@ while True:
     Player.draw()
     Player.run()
     all_sprites.draw(win)
-
+    all_sprites.update()
 
     pygame.display.update()
     clock.tick(FPS)
