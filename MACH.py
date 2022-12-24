@@ -29,20 +29,29 @@ class Ball(pygame.sprite.Sprite):
 
     def update(self):
         self.rand = self.s
+        if self.rect.left < 0:
+            if self.rand == 6:
+                self.rand = 4
+            elif self.rand == 1:
+                self.rand = 3
+        if self.rect.left > 600:
+            if self.rand == 4:
+                self.rand = 6
+            elif self.rand == 3:
+                self.rand = 1
         if self.rand == 1:
-            self.rect.left -= 1
-            self.rect.top -= 1
+            self.rect.left -= 4
+            self.rect.top -= 4
         elif self.rand == 2:
-            self.rect.left -= 1
+             self.rect.top -= 4
         elif self.rand == 3:
-            self.rect.left -= 1
-            self.rect.top += 1
+            self.rect.left += 4
+            self.rect.top -= 4
         elif self.rand == 4:
-            self.rect.left += 1
-            self.rect.top += 1
+            self.rect.left += 4
+            self.rect.top += 4
         elif self.rand == 5:
-            self.rect.left += 1
+            self.rect.top += 4
         elif self.rand == 6:
-            self.rect.left += 1
-            self.rect.top -= 1
-
+            self.rect.left -= 4
+            self.rect.top += 4
