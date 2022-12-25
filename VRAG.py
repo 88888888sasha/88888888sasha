@@ -19,9 +19,9 @@ class vrag1Object():
             self.toRight = True
             self.toLeft = False
         if self.toRight:
-            self.x += 2
+            self.x += 3
         if self.toLeft:
-            self.x -= 2
+            self.x -= 3
 
         pygame.draw.polygon( win, (150, 50, 250),((self.x, self.y), (self.x, self.y + 10), (self.x + 100, self.y + 10), (self.x + 100, self.y)))
     def run(self):

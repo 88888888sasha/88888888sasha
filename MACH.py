@@ -5,6 +5,7 @@ import Common
 
 win = Common.win
 
+
 class Ball(pygame.sprite.Sprite):
     # Создаем инициализатор(конструктор)
     def __init__(self):
@@ -24,21 +25,30 @@ class Ball(pygame.sprite.Sprite):
         self.rect = self.image.get_rect()
         self.rect.left = 270
         self.rect.top = 470
-        self.s = random.randrange(1, 7)
-        self.rand = 0
+        self.rand = random.randrange(1, 7)
 
     def update(self):
-        self.rand = self.s
-        if self.rect.left < 0:
+
+        if self.rect.left < 6:
             if self.rand == 6:
                 self.rand = 4
             elif self.rand == 1:
                 self.rand = 3
-        if self.rect.left > 600:
+        if self.rect.left > 560:
             if self.rand == 4:
                 self.rand = 6
             elif self.rand == 3:
                 self.rand = 1
+        if self.rect.top > 960:
+            if self.rand == 4:
+                self.rand = 3
+            elif self.rand == 6:
+                self.rand = 1
+        if self.rect.top < 6:
+            if self.rand == 3:
+                self.rand = 4
+            elif self.rand == 1:
+                self.rand = 6
         if self.rand == 1:
             self.rect.left -= 4
             self.rect.top -= 4
