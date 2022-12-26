@@ -15,17 +15,9 @@ pygame.init()
 win = Common.win
 FPS = 60
 clock = pygame.time.Clock()
+
 a = 0
 b = 0
-
-#def ST():
-    #print("BAL: ", BAL.rect.top)
-    #print("Player: ", Player.y)
-    #if (Player.x - 30 < BAL.rect.left < Player.x + 130 or Player.x - 30 < BAL.rect.left + 60 < Player.x + 130) and Player.y + 30  == BAL.rect.top:
-    #    if BAL.rand == 4:
-    #        BAL.rand = 3
-    #    elif BAL.rand == 6:
-    #        BAL.rand = 1
 
 def draw_pole():
     pygame.draw.line(win, (250, 250, 250), (0, 0), (5, 1000), 20)
@@ -36,10 +28,6 @@ def draw_pole():
     pygame.draw.lines(win, ((250, 250, 250)), True, ((150, 50), (150, 0), (450, 0), (450, 50)), 10)
     pygame.draw.circle(win, ((250, 250, 250)), (300, 500), 40)
 
-    if BAL.rect.left < 150 and BAL.rect.left < 450 and BAL.rect.top > 900:
-        a + 1
-    if BAL.rect.left < 150 and BAL.rect.left < 450 and BAL.rect.top < 20:
-        b + 1
 
 
 while True:
@@ -57,17 +45,35 @@ while True:
     Player.run()
     all_sprites.draw(win)
     all_sprites.update()
-    if BAL.rect.left > 130 and BAL.rect.left < 470 and BAL.rect.top >= 950 and BAL.rect.top <= 951:
+    if Player.y < BAL.rect.top + 60  < Player.y + 10  and Player.x - 40 < BAL.rect.left < Player.x + 140:
+        if BAL.rand == 4:
+            BAL.rand = 3
+        elif BAL.rand == 6:
+             BAL.rand = 1
+        elif BAL.rand == 5:
+            BAL.rand = 2
+    if vrags.y < BAL.rect.top  < vrags.y + 10  and vrags.x - 40 < BAL.rect.left < vrags.x + 140:
+        if BAL.rand == 1:
+            BAL.rand = 6
+        elif BAL.rand == 3:
+             BAL.rand = 4
+        elif BAL.rand == 2:
+            BAL.rand = 5
+    if BAL.rect.left > 130 and BAL.rect.left < 470 and BAL.rect.top >= 950 and BAL.rect.top <= 955:
         a = a + 1
         BAL.rect.left = 270
         BAL.rect.top = 470
         BAL.rand = random.randint(1, 7)
-    if BAL.rect.left > 130 and BAL.rect.left < 470 and BAL.rect.top >= 10 and BAL.rect.top <= 11:
+    if BAL.rect.left > 130 and BAL.rect.left < 470 and BAL.rect.top >= 10 and BAL.rect.top <= 15:
         b = b + 1
         BAL.rect.left = 270
         BAL.rect.top = 470
         BAL.rand = random.randint(1, 6)
     print(a, b)
+    f1 = pygame.font.Font(None, 100)
+    d = str(str(a) + "     " + str(b))
+    text1 = f1.render(d, 1, (100, 0, 0))
+    win.blit(text1, (215, 466))
 
     pygame.display.update()
     clock.tick(FPS)
