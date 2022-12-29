@@ -18,7 +18,7 @@ clock = pygame.time.Clock()
 
 a = 0
 b = 0
-
+l = 1
 def draw_pole():
     pygame.draw.line(win, (250, 250, 250), (0, 0), (5, 1000), 20)
     pygame.draw.line(win, (250, 250, 250), (600, 0), (600, 1000), 20)
@@ -40,11 +40,12 @@ while True:
 
     draw_pole()
     vrags.draw()
-    vrags.run()
     Player.draw()
-    Player.run()
     all_sprites.draw(win)
-    all_sprites.update()
+    if l == 1:
+        all_sprites.update()
+        vrags.run()
+        Player.run()
     if Player.y < BAL.rect.top + 60  < Player.y + 10  and Player.x - 40 < BAL.rect.left < Player.x + 140:
         if BAL.rand == 4:
             BAL.rand = 3
@@ -69,12 +70,21 @@ while True:
         BAL.rect.left = 270
         BAL.rect.top = 470
         BAL.rand = random.randint(1, 6)
-    print(a, b)
     f1 = pygame.font.Font(None, 100)
     d = str(str(a) + "     " + str(b))
     text1 = f1.render(d, 1, (100, 0, 0))
     win.blit(text1, (215, 466))
-
+    w = 0
+    if a >= 2 or b >= 2:
+        if a >= 2:
+            o = "You WIN"
+        if b >= 2:
+            o = "You LOOSE"
+        pygame.draw.rect(win, (250, 250, 250), (0, 300, 600, 500))
+        f1 = pygame.font.Font(None, 100)
+        text1 = f1.render(o, 1, (0, 0, 0))
+        win.blit(text1, (200, 400))
+        l = 0
     pygame.display.update()
     clock.tick(FPS)
 
