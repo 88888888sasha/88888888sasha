@@ -38,14 +38,15 @@ while True:
     win.fill((0, 225, 0))
 
 
-    draw_pole()
-    vrags.draw()
-    Player.draw()
-    all_sprites.draw(win)
+
     if l == 1:
+        draw_pole()
         all_sprites.update()
+        vrags.draw()
         vrags.run()
         Player.run()
+        Player.draw()
+        all_sprites.draw(win)
     if Player.y < BAL.rect.top + 60  < Player.y + 10  and Player.x - 40 < BAL.rect.left < Player.x + 140:
         if BAL.rand == 4:
             BAL.rand = 3
@@ -64,7 +65,7 @@ while True:
         a = a + 1
         BAL.rect.left = 270
         BAL.rect.top = 470
-        BAL.rand = random.randint(1, 7)
+        BAL.rand = random.randint(1, 6)
     if BAL.rect.left > 130 and BAL.rect.left < 470 and BAL.rect.top >= 10 and BAL.rect.top <= 15:
         b = b + 1
         BAL.rect.left = 270
@@ -75,16 +76,29 @@ while True:
     text1 = f1.render(d, 1, (100, 0, 0))
     win.blit(text1, (215, 466))
     w = 0
-    if a >= 2 or b >= 2:
-        if b >= 2:
-            o = "You WIN"
-        if a >= 2:
-            o = "You LOOSE"
-        pygame.draw.rect(win, (250, 250, 250), (50, 300, 500, 500))
-        f1 = pygame.font.Font(None, 40)
+    if a >= 4 or b >= 4:
+        if b >= 4:
+            o = "You WIN!!!"
+        if a >= 4:
+            o = "You LOOSE!!!"
+        pygame.draw.rect(win, (250, 250, 250), (0, 0, 600, 1000))
+        pygame.draw.rect(win, (0, 250, 250), (0, 0, 600, 1000), 20)
+        pygame.draw.rect(win, (0, 250, 0), (200, 700, 200, 126))
+        f1 = pygame.font.Font(None, 60)
         text1 = f1.render(o, 1, (0, 0, 0))
-        win.blit(text1, (200, 400))
+        win.blit(text1, (200, 200))
+        f1 = pygame.font.Font(None, 40)
+        c = "Заново"
+        text1 = f1.render(c, 1, (0, 0, 0))
+        win.blit(text1, (250, 750))
         l = 0
+        p = pygame.mouse.get_pos()
+        for i in pygame.event.get():
+            if i.type == pygame.MOUSEBUTTONDOWN and (700 < p[1] < 826 and 200 < p[0] < 400):
+                l = 1
+                a = 0
+                b = 0
+
     pygame.display.update()
     clock.tick(FPS)
 
