@@ -76,12 +76,12 @@ while True:
     win.blit(text1, (215, 466))
     w = 0
     if a >= 2 or b >= 2:
-        if a >= 2:
-            o = "You WIN"
         if b >= 2:
+            o = "You WIN"
+        if a >= 2:
             o = "You LOOSE"
-        pygame.draw.rect(win, (250, 250, 250), (0, 300, 600, 500))
-        f1 = pygame.font.Font(None, 100)
+        pygame.draw.rect(win, (250, 250, 250), (50, 300, 500, 500))
+        f1 = pygame.font.Font(None, 40)
         text1 = f1.render(o, 1, (0, 0, 0))
         win.blit(text1, (200, 400))
         l = 0
