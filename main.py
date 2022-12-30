@@ -33,10 +33,10 @@ def run():
         a = 100
         while a <= 150:
             a -= 1
-            vrags.x -= 10
+            vrags.x -= 1
         while a >= 50:
             a += 1
-            vrags.x += 10
+            vrags.x += 1
     if BAL.rect.left < vrags.x:
         vrags.x -= 6
     if BAL.rect.left > vrags.x:
@@ -54,7 +54,8 @@ while True:
         draw_pole()
         all_sprites.update()
         vrags.draw()
-        run()
+        while vrags.x > BAL.rect.top:
+            run()
         Player.run()
         Player.draw()
         all_sprites.draw(win)
