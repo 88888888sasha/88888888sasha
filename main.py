@@ -27,9 +27,20 @@ def draw_pole():
     pygame.draw.lines(win, ((250, 250, 250)), True, ((150, 950), (150, 1000), (450, 1000), (450, 950)), 10)
     pygame.draw.lines(win, ((250, 250, 250)), True, ((150, 50), (150, 0), (450, 0), (450, 50)), 10)
     pygame.draw.circle(win, ((250, 250, 250)), (300, 500), 40)
+def run():
 
-
-
+    while BAL.rand == 2 or BAL.rand == 5:
+        a = 100
+        while a <= 150:
+            a -= 1
+            vrags.x -= 10
+        while a >= 50:
+            a += 1
+            vrags.x += 10
+    if BAL.rect.left < vrags.x:
+        vrags.x -= 6
+    if BAL.rect.left > vrags.x:
+        vrags.x += 6
 while True:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -43,7 +54,7 @@ while True:
         draw_pole()
         all_sprites.update()
         vrags.draw()
-        vrags.run()
+        run()
         Player.run()
         Player.draw()
         all_sprites.draw(win)
@@ -98,7 +109,13 @@ while True:
                 l = 1
                 a = 0
                 b = 0
+                BAL.rect.left = 270
+                BAL.rect.top = 470
+                Player.x = 250
+                Player.y = 900
+                vrags.x = 250
+                vrags.y = 100
+
 
     pygame.display.update()
     clock.tick(FPS)
-

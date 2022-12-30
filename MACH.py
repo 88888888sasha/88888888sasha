@@ -65,4 +65,3 @@ class Ball(pygame.sprite.Sprite):
         elif self.rand == 6:
             self.rect.left -= 6
             self.rect.top += 6
-        print(self.rand)
