@@ -6,6 +6,7 @@ import Common
 import VRAG
 import player1
 import MACH
+import sqlite3
 Player = player1.player1Object()
 vrags = VRAG.vrag1Object()
 BAL = MACH.Ball()
@@ -89,6 +90,23 @@ while True:
             BAL.rect.left = 270
             BAL.rect.top = 470
             BAL.rand = random.randint(1, 6)
+        time = u // 60
+        con = sqlite3.connect("play.sqlite")
+        cur = con.cursor
+        que_create = '''
+        CREATE TABLE IF NOT EXISTS class (
+            id INTEGER PRIMARY KEY,
+            you INTEGER
+            vrag INTEGER
+            time INTEGER
+        )
+        '''
+        cur.execute(que_create)
+        con.commit()
+        que_insert = '''
+        INSERT INTO class (you, vrag, time) VALUES
+            (a, b, time)
+        '''
     f1 = pygame.font.Font(None, 100)
     d = str(str(a) + "     " + str(b))
     text1 = f1.render(d, 1, (100, 0, 0))
@@ -99,7 +117,6 @@ while True:
             o = "You WIN!!!"
         if a >= 4:
             o = "You LOOSE!!!"
-        time = u // 60
         c = "Заново"
         z = ("YOU = " + str(b))
         v = ("VRAG = " + str(a))
