@@ -6,7 +6,7 @@ import Common
 import VRAG
 import player1
 import MACH
-import database
+#import database
 import sqlite3
 Player = player1.player1Object()
 vrags = VRAG.vrag1Object()
@@ -95,7 +95,7 @@ while True:
         Player.draw()
         all_sprites.draw(win)
         kass()
-        if BAL.rect.left > 130 and BAL.rect.left < 470 and BAL.rect.top >= 950 and BAL.rect.top <= 955 and BAL.rect.left > 130 and BAL.rect.left < 470 and BAL.rect.top >= 10 and BAL.rect.top <= 15:
+        if (BAL.rect.left > 130 and BAL.rect.left < 470 and BAL.rect.top >= 920) or (BAL.rect.top <= 925 and BAL.rect.left > 130 and BAL.rect.left < 470 and BAL.rect.top <= 80):
             if BAL.rect.left > 130 and BAL.rect.left < 470 and BAL.rect.top >= 950 and BAL.rect.top <= 955:
                 a = a + 1
                 BAL.rect.left = 270
@@ -106,7 +106,7 @@ while True:
                 BAL.rect.left = 270
                 BAL.rect.top = 470
                 BAL.rand = random.randint(1, 6)
-            database.create_table()
+            #database.create_table()
 
 
 
