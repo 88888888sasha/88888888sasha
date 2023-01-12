@@ -18,7 +18,7 @@ win = Common.win
 FPS = 60
 clock = pygame.time.Clock()
 def kas():
-    if Player.y - 10 < BAL.rect.top + 60  < Player.y + 10  and Player.x - 60 < BAL.rect.left < Player.x + 120:
+    if Player.y < BAL.rect.top + 60  < Player.y + 5  and Player.x - 60 < BAL.rect.left < Player.x + 120:
         if BAL.rand == 4:
             BAL.rand = 3
         elif BAL.rand == 6:
@@ -27,7 +27,7 @@ def kas():
             BAL.rand = 6
         elif BAL.rand == 3:
             BAL.rand = 4
-    if vrags.y - 10 < BAL.rect.top < vrags.y + 10  and vrags.x - 60 < BAL.rect.left < vrags.x + 120:
+    if vrags.y < BAL.rect.top < vrags.y + 5  and vrags.x - 60 < BAL.rect.left < vrags.x + 120:
         if BAL.rand == 1:
             BAL.rand = 6
         elif BAL.rand == 3:
