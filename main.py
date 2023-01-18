@@ -27,6 +27,8 @@ def kas():
             BAL.rand = 6
         elif BAL.rand == 3:
             BAL.rand = 4
+        elif BAL.rand == 5:
+            BAL.rand = 2
     if vrags.y < BAL.rect.top < vrags.y + 5  and vrags.x - 60 < BAL.rect.left < vrags.x + 120:
         if BAL.rand == 1:
             BAL.rand = 6
@@ -36,6 +38,8 @@ def kas():
             BAL.rand = 1
         elif BAL.rand == 4:
             BAL.rand = 3
+        elif BAL.rand == 2:
+            BAL.rand = 5
 
 
 
@@ -65,16 +69,11 @@ def run():
             vrags.x += 6
 def kass():
     if BAL.rand == 2 or BAL.rand == 5:
+        while BAL.rect.left <= 300:
+            BAL.rect.left += 10
         while BAL.rect.left >= 200:
             BAL.rect.left -= 10
-        while BAL.rect.left <= 200:
-            BAL.rect.left += 10
-        if Player.y - 10 < BAL.rect.top + 60 < Player.y + 10 and Player.x - 60 < BAL.rect.left < Player.x + 140:
-            if BAL.rand == 5:
-                BAL.rand = 2
-        if vrags.y - 10 < BAL.rect.top < vrags.y + 10 and vrags.x - 60 < BAL.rect.left < vrags.x + 140:
-            if BAL.rand == 2:
-                BAL.rand = 5
+        kas()
     else:
         kas()
         run()
