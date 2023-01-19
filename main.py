@@ -4,6 +4,7 @@ import pygame
 
 import Common
 import VRAG
+import database
 import player1
 import MACH
 #import database
@@ -155,7 +156,7 @@ while True:
                 vrags.y = 100
                 u = 0
 
-
+    print(database.a, database.b)
     pygame.display.update()
     clock.tick(FPS)
 
