@@ -5,10 +5,10 @@ import pygame
 import Common
 import VRAG
 import database
+#import database
 import player1
 import MACH
-#import database
-import sqlite3
+#import sqlite3
 Player = player1.player1Object()
 vrags = VRAG.vrag1Object()
 BAL = MACH.Ball()
@@ -78,6 +78,7 @@ def kass():
     else:
         kas()
         run()
+#database.create_table()
 while True:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -106,7 +107,7 @@ while True:
                 BAL.rect.left = 270
                 BAL.rect.top = 470
                 BAL.rand = random.randint(1, 6)
-            #database.create_table()
+            #database.insert_data(a, b)
 
 
 
@@ -156,7 +157,7 @@ while True:
                 vrags.y = 100
                 u = 0
 
-    print(database.a, database.b)
+    #print(database.a, database.b)
     pygame.display.update()
     clock.tick(FPS)
 
