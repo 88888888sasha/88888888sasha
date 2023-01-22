@@ -1,3 +1,4 @@
+""""""""""""""""
 ### Подключаем модуль sqlite3
 import sqlite3
 
@@ -44,6 +45,7 @@ def insert_data(SCHOT, You, Vrag, a, b):
     # column - поля(столбцы) в которые хотите занести данные
     # value - сами данные
     # Создаем запрос на внесение данных в таблицу
+    SCHOT = SCHOT
     que_insert = '''
             INSERT INTO SCHOT (You) VALUES (a) 
         '''
@@ -78,4 +80,5 @@ b = get_data('scores', 'name, score')
 
 # Закрываем соединение с базой данных
 database.close()
-###
+'''
+'''
