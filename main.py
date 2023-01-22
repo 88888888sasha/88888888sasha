@@ -5,10 +5,9 @@ import pygame
 import Common
 import VRAG
 import database
-#import database
 import player1
 import MACH
-#import sqlite3
+import sqlite3
 Player = player1.player1Object()
 vrags = VRAG.vrag1Object()
 BAL = MACH.Ball()
@@ -78,7 +77,7 @@ def kass():
     else:
         kas()
         run()
-#database.create_table()
+database.create_table()
 while True:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -107,7 +106,8 @@ while True:
                 BAL.rect.left = 270
                 BAL.rect.top = 470
                 BAL.rand = random.randint(1, 6)
-            #database.insert_data(a, b)
+
+            database.insert_data(a, b)
 
 
 
@@ -118,6 +118,7 @@ while True:
     text1 = f1.render(d, 1, (100, 0, 0))
     win.blit(text1, (215, 466))
     w = 0
+    database.get_data()
     if a >= 4 or b >= 4:
         if b >= 4:
             o = "You WIN!!!"
