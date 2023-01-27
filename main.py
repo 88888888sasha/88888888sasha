@@ -4,7 +4,7 @@ import pygame
 
 import Common
 import VRAG
-#import database
+import database
 import player1
 import MACH
 import sqlite3
@@ -18,7 +18,7 @@ win = Common.win
 FPS = 60
 clock = pygame.time.Clock()
 def kas():
-    if Player.y < BAL.rect.top + 60  < Player.y + 5  and Player.x - 60 < BAL.rect.left < Player.x + 120:
+    if Player.y < BAL.rect.top + 60  < Player.y + 12  and Player.x - 60 < BAL.rect.left < Player.x + 120:
         if BAL.rand == 4:
             BAL.rand = 3
         elif BAL.rand == 6:
@@ -29,7 +29,7 @@ def kas():
             BAL.rand = 4
         elif BAL.rand == 5:
             BAL.rand = 2
-    if vrags.y < BAL.rect.top < vrags.y + 5  and vrags.x - 60 < BAL.rect.left < vrags.x + 120:
+    if vrags.y < BAL.rect.top < vrags.y + 12  and vrags.x - 60 < BAL.rect.left < vrags.x + 120:
         if BAL.rand == 1:
             BAL.rand = 6
         elif BAL.rand == 3:
@@ -77,7 +77,7 @@ def kass():
     else:
         kas()
         run()
-#database.create_table()
+database.create_table()
 while True:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
