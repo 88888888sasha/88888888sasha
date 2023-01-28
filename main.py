@@ -107,7 +107,7 @@ while True:
                 BAL.rect.top = 470
                 BAL.rand = random.randint(1, 6)
 
-            #database.insert_data(a, b)
+            database.insert_data(a, b)
 
 
 
@@ -118,7 +118,7 @@ while True:
     text1 = f1.render(d, 1, (100, 0, 0))
     win.blit(text1, (215, 466))
     w = 0
-    #database.get_data()
+    database.get_data()
     if a >= 4 or b >= 4:
         if b >= 4:
             o = "You WIN!!!"
