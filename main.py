@@ -17,6 +17,7 @@ pygame.init()
 win = Common.win
 FPS = 60
 clock = pygame.time.Clock()
+
 def kas():
     if Player.y < BAL.rect.top + 60  < Player.y + 12  and Player.x - 60 < BAL.rect.left < Player.x + 120:
         if BAL.rand == 4:
@@ -118,7 +119,7 @@ while True:
     text1 = f1.render(d, 1, (100, 0, 0))
     win.blit(text1, (215, 466))
     w = 0
-    database.get_data()
+    print(database.get_data())
     if a >= 4 or b >= 4:
         if b >= 4:
             o = "You WIN!!!"
