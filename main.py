@@ -79,6 +79,8 @@ def kass():
         kas()
         run()
 database.create_table()
+inserting_data = True
+result = ""
 while True:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -102,13 +104,16 @@ while True:
                 BAL.rect.left = 270
                 BAL.rect.top = 470
                 BAL.rand = random.randint(1, 6)
+                #database.insert_data(a, b)
             if BAL.rect.left > 130 and BAL.rect.left < 470 and BAL.rect.top >= 10 and BAL.rect.top <= 15:
                 b = b + 1
                 BAL.rect.left = 270
                 BAL.rect.top = 470
                 BAL.rand = random.randint(1, 6)
+                #database.insert_data(a, b)
 
-            database.insert_data(a, b)
+        #print(database.get_data())
+
 
 
 
@@ -119,19 +124,23 @@ while True:
     text1 = f1.render(d, 1, (100, 0, 0))
     win.blit(text1, (215, 466))
     w = 0
-    print(database.get_data())
     if a >= 4 or b >= 4:
+        if inserting_data:
+            result = database.get_data()
+            database.insert_data(a, b)
+            #print(database.get_data())
+            inserting_data = False
         if b >= 4:
-            o = "You WIN!!!"
+            o = "Вы выиграли!!!"
         if a >= 4:
-            o = "You LOOSE!!!"
+            o = "Вы проиграли!!!"
         c = "Заново"
-        z = ("YOU = " + str(b))
-        v = ("VRAG = " + str(a))
+        z = ("Вы = " + str(b))
+        v = ("Противник = " + str(a))
         pygame.draw.rect(win, (250, 250, 250), (0, 0, 600, 1000))
         pygame.draw.rect(win, (0, 250, 250), (0, 0, 600, 1000), 20)
         pygame.draw.rect(win, (0, 250, 0), (200, 700, 200, 126))
-        n = ("time = " + str(time) + " second")
+        n = ("Время = " + str(time) + " секунд")
         f1 = pygame.font.Font(None, 100)
         f2 = pygame.font.Font(None, 60)
         text1 = f1.render(o, 1, (0, 0, 0))
@@ -139,11 +148,14 @@ while True:
         text3 = f2.render(z, 1, (0, 0, 0))
         text4 = f2.render(v, 1, (0, 0, 0))
         text5 = f2.render(n, 1, (0, 0, 0))
-        win.blit(text1, (100, 200))
+        result_text = "Последня игра: " + str(result[-1][0]) + ":" + str(result[-1][1])
+        text6 = f2.render(result_text, 1, (0, 0, 0))
+        win.blit(text1, (50, 200))
         win.blit(text2, (220, 750))
-        win.blit(text3, (160, 300))
-        win.blit(text4, (160, 400))
-        win.blit(text5, (160, 500))
+        win.blit(text3, (50, 300))
+        win.blit(text4, (50, 400))
+        win.blit(text5, (50, 500))
+        win.blit(text6, (50, 600))
         l = 0
         p = pygame.mouse.get_pos()
         for i in pygame.event.get():
@@ -158,6 +170,7 @@ while True:
                 vrags.x = 250
                 vrags.y = 100
                 u = 0
+                inserting_data = True
 
     #print(database.a, database.b)
     pygame.display.update()

@@ -29,7 +29,7 @@ def get_data():
     # table_name - имя таблицы, из которой хотим получить данные
     # Создаем запрос на получение данных
     que_select = '''
-        SELECT You FROM SCHOT
+        SELECT You, Vrag FROM SCHOT
     '''
 
     # Получаем результат
